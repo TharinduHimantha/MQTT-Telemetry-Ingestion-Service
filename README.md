@@ -76,26 +76,31 @@ This project demonstrates a production-ready microservice architecture for IoT i
 
 ## 🛠 Running the Application
 
-### 1️⃣ Build the application
+### 1. Build the application
 ```bash
 mvn clean package
+```
 
-### 2️⃣ Start the full stack
+### 2. Start the full stack
 ```bash
 docker-compose up --build
+```
 
 This will start:
   Mosquitto MQTT Broker (Port 1883)
   TimescaleDB (Port 5432)
   Spring Boot Subscriber Service
 
+---
+
 ## 🔐 Configuration
 
 Database configuration is handled using environment variables:
-
-  SPRING_DATASOURCE_URL
-  SPRING_DATASOURCE_USERNAME
-  SPRING_DATASOURCE_PASSWORD
+```
+SPRING_DATASOURCE_URL
+SPRING_DATASOURCE_USERNAME
+SPRING_DATASOURCE_PASSWORD
+```
 
 These are defined inside docker-compose.yml
 
