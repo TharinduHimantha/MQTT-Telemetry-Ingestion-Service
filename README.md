@@ -1,6 +1,11 @@
 # MQTT-Telemetry-Ingestion-Service
 Enterprise-grade MQTT telemetry ingestion microservice built with Spring Boot, Mosquitto, and TimescaleDB for scalable time-series data processing.
 
+![Java](https://img.shields.io/badge/Java-21-blue)
+![Spring Boot](https://img.shields.io/badge/SpringBoot-3.x-brightgreen)
+![Docker](https://img.shields.io/badge/Docker-Containerized-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+
 ---
 
 ## 📌 Overview
