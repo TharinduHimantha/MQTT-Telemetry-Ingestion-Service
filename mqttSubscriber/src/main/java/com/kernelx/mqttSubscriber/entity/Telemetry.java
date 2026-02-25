@@ -16,6 +16,9 @@ public class Telemetry {
     @EmbeddedId
     private TelemetryId id;
 
-    private Double temperature;
-    private Double humidity;
+    @Column(name = "value")
+    private Double value;
+
+    @Column(name = "sensor_health")
+    private Integer sensorHealth;
 }

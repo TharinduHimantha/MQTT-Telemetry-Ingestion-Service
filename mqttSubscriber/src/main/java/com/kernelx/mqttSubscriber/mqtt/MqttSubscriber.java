@@ -10,10 +10,10 @@ import lombok.RequiredArgsConstructor;
 import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.springframework.stereotype.Component;
+import tools.jackson.databind.ObjectMapper;
 
 
 import java.time.Instant;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Component
 @RequiredArgsConstructor
@@ -21,8 +21,8 @@ public class MqttSubscriber {
 
     private final MqttProperties properties;
     private final TelemetryService telemetryService;
+    private final ObjectMapper objectMapper;
 
-    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @PostConstruct
     public void init() throws MqttException {
@@ -40,26 +40,28 @@ public class MqttSubscriber {
         client.connect(options);
 
         client.subscribe(properties.topic, properties.qos, this::handleMessage);
+        System.out.println("MQTT connected and subscribed");
     }
 
     private void handleMessage(String topic, MqttMessage message) {
 
         try {
             String payload = new String(message.getPayload());
+            System.out.println("Received: " + payload);
 
             TelemetryDTO dto = objectMapper.readValue(payload, TelemetryDTO.class);
 
             TelemetryId id = new TelemetryId(
                     dto.getDeviceId(),
-                    Instant.now()
+                    dto.getTimestamp()
             );
 
             Telemetry telemetry = new Telemetry();
             telemetry.setId(id);
-            telemetry.setTemperature(dto.getTemperature());
-            telemetry.setHumidity(dto.getHumidity());
+            telemetry.setValue(dto.getValue());
+            telemetry.setSensorHealth(dto.getSensorHealth());
 
-            telemetryService.saveTelemetry(telemetry);
+            telemetryService.addToBuffer(telemetry);
 
         } catch (Exception e) {
             e.printStackTrace();

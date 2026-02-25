@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/iotdb
+    url: jdbc:postgresql://localhost:5432/mqtt_sensor_data
     username: postgres
     password: postgres
   jpa:
