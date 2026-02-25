@@ -2,6 +2,7 @@ package com.kernelx.mqttSubscriber.service;
 
 import com.kernelx.mqttSubscriber.entity.Telemetry;
 import com.kernelx.mqttSubscriber.repository.TelemetryRepository;
+import jakarta.annotation.PreDestroy;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
@@ -46,6 +47,11 @@ public class TelemetryService {
         System.out.println("Inserted batch of size: " + batch.size());
     }
 
-    
+    @PreDestroy
+    @Transactional
+    public void shutdownFlush() {
+        System.out.println("Application shutting down. Flushing remaining telemetry...");
+        flushBuffer();
+    }
 }
 
