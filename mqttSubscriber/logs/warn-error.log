@@ -1,0 +1,2 @@
+2026-03-01 14:04:14 [main] WARN  o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-01 14:05:09 [MQTT Call: spring-mqtt-consumer] WARN  c.k.m.mqtt.MqttSubscriber - Field: sensorHealth error: Sensor health must be <= 100 , Sensor id: 3241 Recorded Timestamp: 2026-03-01T14:05:06Z 
