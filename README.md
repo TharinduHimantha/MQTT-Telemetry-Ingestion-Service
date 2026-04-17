@@ -18,6 +18,9 @@ Incoming telemetry messages are processed and stored in a TimescaleDB hypertable
 
 This project demonstrates a production-ready microservice architecture for IoT ingestion pipelines.
 
+#### Important
+  Please dedicate port 8091 for this microservice
+  
 ---
 
 ## 🏗 Architecture
@@ -28,8 +31,8 @@ This project demonstrates a production-ready microservice architecture for IoT i
                     |
                     v
            +------------------+
-           |   Mosquitto      |
            |   MQTT Broker    |
+           | (of your choice) |
            +------------------+
                     |
                     v
@@ -63,6 +66,7 @@ This project demonstrates a production-ready microservice architecture for IoT i
 
 - MQTT topic wildcard subscription
 - Real-time telemetry ingestion
+- Batch insertion for optimized performance
 - Time-series optimized storage (hypertables)
 - Containerized microservice architecture
 - Environment-based configuration
@@ -75,7 +79,7 @@ This project demonstrates a production-ready microservice architecture for IoT i
 
 - Docker Desktop
 - Maven
-- Java 17
+- Java 21
 
 ---
 
@@ -85,16 +89,27 @@ This project demonstrates a production-ready microservice architecture for IoT i
 ```bash
 mvn clean package
 ```
-
-### 2. Start the full stack
+or
 ```bash
-docker-compose up --build
+mvn package -Dskip Tests
+```
+
+### 2. Build the Docker image
+```bash
+docker build -t mqtt-subscriber-service .
+```
+
+### 3. Run the Docker image as a container
+```bash
+docker run --name mqtt-subscriber-container -p 8091:8080 mqtt-subscriber-service
 ```
 
 This will start:
-  Mosquitto MQTT Broker (Port 1883)
-  TimescaleDB (Port 5432)
-  Spring Boot Subscriber Service
+  Spring Boot Subscriber Service on localhost 8091
+
+#### Important
+  The localhost port 8091 was selected for running the application
+  TimescaleDB must be already running on Port 5432 for this to work
 
 ---
 
