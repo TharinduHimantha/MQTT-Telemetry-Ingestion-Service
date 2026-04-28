@@ -12,11 +12,18 @@
 #        format_sql: true
 #    show-sql: false
 
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/mqtt_sensor_data
+#    username: postgres
+#    password: postgres
+#    hikari:
+#      initialization-fail-timeout: 60000
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/mqtt_sensor_data
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://localhost:5432/kernelX
+    username: kernelx
+    password: kernelX
     hikari:
       initialization-fail-timeout: 60000
 

@@ -6,9 +6,9 @@ services:
     image: timescale/timescaledb:latest-pg14
     container_name: master_timescaledb
     environment:
-      POSTGRES_DB: mqtt_sensor_data
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: kernelX
+      POSTGRES_USER: kernelX
+      POSTGRES_PASSWORD: kernelX
     ports:
       - "5432:5432"
     volumes:
@@ -22,9 +22,9 @@ services:
     depends_on:
       - db
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/mqtt_sensor_data
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/kernelX
+      SPRING_DATASOURCE_USERNAME: kernelX
+      SPRING_DATASOURCE_PASSWORD: kernelX
 
 volumes:
   db_data:
