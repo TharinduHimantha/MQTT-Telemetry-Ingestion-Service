@@ -13,8 +13,8 @@ import java.time.Instant;
 @AllArgsConstructor
 public class TelemetryId implements Serializable {
 
-    @Column(name = "device_id")
-    private String deviceId;
+    @Column(name = "sensor_id")
+    private Integer deviceId;
 
     @Column(name = "timestamp")
     private Instant timestamp;

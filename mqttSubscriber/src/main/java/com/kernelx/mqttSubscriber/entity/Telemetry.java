@@ -7,7 +7,7 @@ import java.time.Instant;
 import lombok.*;
 
 @Entity
-@Table(name = "telemetry")
+@Table(name = "sensor_reading")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,9 +16,9 @@ public class Telemetry {
     @EmbeddedId
     private TelemetryId id;
 
-    @Column(name = "value")
+    @Column(name = "measurement")
     private Double value;
 
-    @Column(name = "sensor_health")
+    @Column(name = "battery_status")
     private Integer sensorHealth;
 }

@@ -21,9 +21,9 @@
 #      initialization-fail-timeout: 60000
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/kernelX
+    url: jdbc:postgresql://localhost:5432/kernelx
     username: kernelx
-    password: kernelX
+    password: kernelx
     hikari:
       initialization-fail-timeout: 60000
 

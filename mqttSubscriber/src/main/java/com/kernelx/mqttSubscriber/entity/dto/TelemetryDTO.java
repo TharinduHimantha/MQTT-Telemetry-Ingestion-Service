@@ -8,8 +8,8 @@ import java.time.Instant;
 @Data
 public class TelemetryDTO {
 
-    @NotBlank(message = "Device ID must not be empty")
-    private String deviceId;
+    @NotNull(message = "Device ID is required")
+    private Integer deviceId;
 
     @NotNull(message = "Value is required")
     private Double value;
