@@ -19,6 +19,10 @@
 #    password: postgres
 #    hikari:
 #      initialization-fail-timeout: 60000
+
+server:
+  port: 8091
+
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/kernelx
