@@ -27,7 +27,7 @@ public class TelemetryService {
     }
 
     // Runs every 2 minutes
-    @Scheduled(fixedRate = 30000) // 30,000 ms = 0.5 minutes
+    @Scheduled(fixedRate = 8000) // 30,000 ms = 0.5 minutes
     @Transactional
     public void flushBuffer() {
 
