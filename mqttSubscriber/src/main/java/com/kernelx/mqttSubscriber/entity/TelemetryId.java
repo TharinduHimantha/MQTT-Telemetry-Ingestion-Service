@@ -14,7 +14,7 @@ import java.time.Instant;
 public class TelemetryId implements Serializable {
 
     @Column(name = "sensor_id")
-    private Integer deviceId;
+    private String deviceId;
 
     @Column(name = "timestamp")
     private Instant timestamp;
